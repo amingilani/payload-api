@@ -1,0 +1,20 @@
+version: '2'
+services:
+  payload-api:
+    build: .
+    container_name: payload-api
+    working_dir: /home/app/payload-api
+    ports:
+      - "80:80"
+    environment:
+      - PASSENGER_APP_ENV=development
+      - RAILS_ENV=development
+    volumes:
+      - .:/home/app/payload-api
+  postgres:
+    image: postgres:9.6
+    container_name: payload-db
+    environment:
+      - POSTGRES_USER=payload
+      - POSTGRES_DB=payload-api_development
+      - POSTGRES_PASSWORD=secretpassword
