@@ -5,15 +5,15 @@ services:
     container_name: payload-api
     working_dir: /home/app/payload-api
     ports:
-      - "80:80"
+      - "3000:80"
     environment:
       - PASSENGER_APP_ENV=development
       - RAILS_ENV=development
     volumes:
       - .:/home/app/payload-api
-  postgres:
+  db:
     image: postgres:9.6
-    container_name: payload-db
+    container_name: db
     environment:
       - POSTGRES_USER=payload
       - POSTGRES_DB=payload-api_development

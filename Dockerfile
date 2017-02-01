@@ -12,6 +12,10 @@ RUN apt-get update
 # Active nginx
 RUN rm -f /etc/service/nginx/down
 
+# Disable SSH
+# Some discussion on this: https://news.ycombinator.com/item?id=7950326
+RUN rm -rf /etc/service/sshd /etc/my_init.d/00_regen_ssh_host_keys.sh
+
 # Install bundle of gems
 WORKDIR /tmp
 ADD Gemfile /tmp/
